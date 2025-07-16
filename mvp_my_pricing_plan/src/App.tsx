@@ -69,19 +69,25 @@ const MOCK_DB: Record<string, HouseData> = {
 function App() {
   const [addressInput, setAddressInput] = useState('');
   const [foundHouse, setFoundHouse] = useState<HouseData | null>(null);
+  const [isSuggestionsVisible, setSuggestionsVisible] = useState(false);
 
   // Получаем список подсказок на основе ввода
   const suggestions = useMemo(() => {
-    if (addressInput.length < 3) {
-      return [];
-    }
     const inputLower = addressInput.toLowerCase();
+    // Если поле пустое, показываем все адреса. В противном случае - фильтруем.
+    if (inputLower === '') {
+      return Object.keys(MOCK_DB);
+    }
     return Object.keys(MOCK_DB).filter(
       (address) =>
-        address.toLowerCase().includes(inputLower) &&
-        address.toLowerCase() !== inputLower
+        address.toLowerCase().includes(inputLower)
     );
   }, [addressInput]);
+
+  const handleSuggestionClick = (address: string) => {
+    setAddressInput(address);
+    setSuggestionsVisible(false);
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -132,18 +138,21 @@ function App() {
         <input
           type="text"
           className="address-input"
-          placeholder="Начните вводить адрес..."
+          placeholder="Выберите или введите адрес"
           value={addressInput}
           onChange={(e) => setAddressInput(e.target.value)}
+          onFocus={() => setSuggestionsVisible(true)}
+          onBlur={() => setTimeout(() => setSuggestionsVisible(false), 200)} // Небольшая задержка, чтобы успел сработать клик по подсказке
           autoComplete="off"
         />
-        {suggestions.length > 0 && (
+        {isSuggestionsVisible && suggestions.length > 0 && (
           <div className="address-suggestions-list">
             {suggestions.map((address) => (
               <div
                 key={address}
                 className="address-suggestion"
-                onClick={() => setAddressInput(address)}
+                // Используем onMouseDown, т.к. он срабатывает до onBlur на поле ввода
+                onMouseDown={() => handleSuggestionClick(address)}
               >
                 {address}
               </div>

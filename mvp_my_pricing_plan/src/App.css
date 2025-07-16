@@ -19,8 +19,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  /* Добавляем фон */
-  background-image: url('https://www.ivd.ru/images/cache/2019/3/25/resize_1200_630_true_crop_1500_843_0_78_q90_721811_646e84f05c.jpeg');
+  /* Затемняем фон с помощью градиента поверх изображения */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('https://www.ivd.ru/images/cache/2019/3/25/resize_1200_630_true_crop_1500_843_0_78_q90_721811_646e84f05c.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -38,15 +39,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 450px; /* Увеличим минимальную высоту */
+  min-height: 500px; /* Увеличим минимальную высоту */
   width: 100%;
-  max-width: 750px; /* Сделаем окно шире */
+  max-width: 850px; /* Сделаем окно еще шире */
   /* Делаем фон полупрозрачным с эффектом размытия */
-  background-color: rgba(50, 50, 50, 0.9); /* Чуть светлее и менее прозрачный фон для читаемости */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(10px); /* Для Safari */
+  background-color: rgba(65, 65, 65, 0.92); /* Светлее и чуть плотнее */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px); /* Для Safari */
   border-radius: 12px; /* Немного увеличим скругление */
-  padding: 2.5rem; /* Увеличим внутренние отступы */
+  padding: 3rem; /* Увеличим внутренние отступы */
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -54,12 +55,14 @@ body {
 /* Стили для экрана ввода */
 .search-page h1 {
   color: #76e8e8; /* Яркий, бирюзовый акцентный цвет */
+  font-size: 3.5rem; /* Увеличим заголовок */
   margin-top: 0;
 }
 
 .search-page p {
-  max-width: 450px;
+  max-width: 550px;
   margin-bottom: 2rem;
+  font-size: 1.1rem; /* Увеличим текст описания */
 }
 
 .address-form {
@@ -69,8 +72,8 @@ body {
 
 .address-input {
   width: calc(100% - 2rem);
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
+  padding: 1rem 1.2rem; /* Увеличим паддинги */
+  font-size: 1.1rem; /* Увеличим шрифт */
   border-radius: 6px;
   border: 1px solid #666;
   background-color: #444;
@@ -80,7 +83,7 @@ body {
 /* Контейнер для выпадающего списка подсказок */
 .address-suggestions-list {
   position: absolute;
-  top: 100%;
+  top: calc(40% - 0.5rem); /* Чуть выше, чтобы не было зазора */
   left: 0;
   right: 0;
   background: #444;
@@ -89,14 +92,35 @@ body {
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   z-index: 10;
-  max-height: 200px;
+  max-height: 160px;
   overflow-y: auto;
+  /* Стилизация для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #76e8e8 #3a3a3a;
 }
 
+/* Стилизация полосы прокрутки для WebKit-браузеров (Chrome, Safari, Edge) */
+.address-suggestions-list::-webkit-scrollbar {
+  width: 10px; /* Ширина скроллбара */
+}
+
+.address-suggestions-list::-webkit-scrollbar-track {
+  background: #3a3a3a; /* Фон дорожки скроллбара, чуть темнее фона списка */
+  border-radius: 10px;
+}
+
+.address-suggestions-list::-webkit-scrollbar-thumb {
+  background-color: #76e8e8; /* Цвет ползунка, наш акцентный цвет */
+  border-radius: 4px; /* Скругление углов ползунка */
+}
+.address-suggestions-list::-webkit-scrollbar-thumb:hover {
+  background-color: #89ffff; /* Цвет ползунка при наведении */
+}
 /* Отдельная подсказка в списке */
 .address-suggestion {
-  padding: 0.7rem 1rem;
+  padding: 0.9rem 1.2rem;
   text-align: left;
+  font-size: 1.05rem;
   cursor: pointer;
 }
 .address-suggestion:hover {
@@ -105,9 +129,9 @@ body {
 }
 
 .button {
-  margin-top: 1.5rem;
-  padding: 0.8rem 2rem;
-  font-size: 1rem;
+  margin-top: 2.5rem; /* Больше отступ сверху */
+  padding: 1.1rem 2.5rem; /* Увеличим кнопку */
+  font-size: 1.2rem; /* Увеличим шрифт в кнопке */
   font-weight: 700;
   cursor: pointer;
   border: 1px solid transparent;
@@ -130,12 +154,14 @@ body {
   list-style-type: none;
   padding: 0;
   text-align: left;
+  font-size: 1.1rem; /* Увеличим общий шрифт для списка */
 }
 .results-page li {
   background: #444;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
   border-radius: 4px;
+    font-size: 1.05rem;
 }
 .results-page .tariff-result {
   margin-top: 2rem;
