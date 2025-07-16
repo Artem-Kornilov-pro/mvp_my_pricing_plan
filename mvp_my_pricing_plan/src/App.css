@@ -1,0 +1,150 @@
+/* Общие стили */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #f0f0f0; /* Сделаем основной текст светлее */
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  /* Добавляем фон */
+  background-image: url('https://www.ivd.ru/images/cache/2019/3/25/resize_1200_630_true_crop_1500_843_0_78_q90_721811_646e84f05c.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px; /* Увеличим минимальную высоту */
+  width: 100%;
+  max-width: 750px; /* Сделаем окно шире */
+  /* Делаем фон полупрозрачным с эффектом размытия */
+  background-color: rgba(50, 50, 50, 0.9); /* Чуть светлее и менее прозрачный фон для читаемости */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(10px); /* Для Safari */
+  border-radius: 12px; /* Немного увеличим скругление */
+  padding: 2.5rem; /* Увеличим внутренние отступы */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Стили для экрана ввода */
+.search-page h1 {
+  color: #76e8e8; /* Яркий, бирюзовый акцентный цвет */
+  margin-top: 0;
+}
+
+.search-page p {
+  max-width: 450px;
+  margin-bottom: 2rem;
+}
+
+.address-form {
+  width: 100%;
+  position: relative;
+}
+
+.address-input {
+  width: calc(100% - 2rem);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #666;
+  background-color: #444;
+  color: white;
+}
+
+/* Контейнер для выпадающего списка подсказок */
+.address-suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #444;
+  border: 1px solid #555;
+  border-top: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Отдельная подсказка в списке */
+.address-suggestion {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+.address-suggestion:hover {
+  background-color: #76e8e8;
+  color: #1a1a1a;
+}
+
+.button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: #76e8e8;
+  color: #111;
+  transition: background-color 0.25s;
+}
+.button:hover {
+  background-color: #89ffff; /* Светлее при наведении */
+}
+.button:disabled {
+  background-color: #444;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* Стили для экрана результатов */
+.results-page ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+}
+.results-page li {
+  background: #444;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+.results-page .tariff-result {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #76e8e8; /* Используем новый акцентный цвет */
+}
+
+.results-page .address-header {
+  font-style: italic;
+  color: #aaa;
+}
