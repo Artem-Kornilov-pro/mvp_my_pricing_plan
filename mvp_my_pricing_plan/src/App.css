@@ -57,12 +57,13 @@ body {
   color: #76e8e8; /* Яркий, бирюзовый акцентный цвет */
   font-size: 3.5rem; /* Увеличим заголовок */
   margin-top: 0;
+  margin-bottom: 0.4rem; /* Уменьшаем расстояние до параграфа */
 }
 
 .search-page p {
   max-width: 550px;
   margin-bottom: 2rem;
-  font-size: 1.1rem; /* Увеличим текст описания */
+  font-size: 1.3rem; /* Увеличим текст описания */
 }
 
 .address-form {
@@ -160,9 +161,14 @@ body {
   background: #444;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
+  background: #3a3a3a; /* Сделаем фон немного темнее для контраста */
+  padding: 0.8rem 1.5rem; /* Увеличим отступы для большего простора */
+  margin-bottom: 0.55rem; /* Увеличим расстояние между элементами */
   border-radius: 4px;
     font-size: 1.05rem;
+  font-size: 1.2rem;   /* Увеличим шрифт для лучшей читаемости */
 }
+
 .results-page .tariff-result {
   margin-top: 2rem;
   font-size: 1.5rem;
@@ -172,5 +178,14 @@ body {
 
 .results-page .address-header {
   font-style: italic;
-  color: #aaa;
+  color: #efecec;
+  font-size: 1.55rem; /* Увеличим шрифт для адреса */
+  margin-bottom: 1.5rem; /* Добавим отступ для лучшего разделения */
+}
+
+.results-page h2 {
+  font-size: 2.5rem; /* Размер для заголовка на странице результатов */
+  margin-top: 0; /* Уберем верхний отступ */
+  margin-bottom: 1.5rem; /* Увеличим отступ снизу */
+  color: #76e8e8; /* Сделаем его в цвет акцента, как h1 */
 }
